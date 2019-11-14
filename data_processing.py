@@ -11,7 +11,7 @@ RSI = abstract.Function('rsi')
 
 
 # import original dataset
-original_data = pd.read_excel(open('DAX_data.xlsx', 'rb'))
+original_data = pd.read_excel(open('./data/DAX_data.xlsx', 'rb'))
 
 # inputs should be provided in "OHLCV" format for the TA-LIB functions
 inputs = original_data[['Open', 'High', 'Low', 'Close', 'Volume']]
@@ -37,7 +37,7 @@ rsi_output = RSI(inputs, timeperiod=14)
 final_output = pd.concat([inputs['close'], cci_output, macd_output, sma_output, rsi_output], axis = 1).dropna()
 
 # save the final output as csv
-final_output.to_csv("final_output.csv", sep='\t', encoding='utf-8')
+final_output.to_csv("./data/final_output.csv", sep='\t', encoding='utf-8', index=False, header = False)
 
 # DONE! :)
 print("DONE")
